@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.game-card {
+  position: relative; 
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  width: 142px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; 
+  display: block;
+}
+
+
+.game-card p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6); 
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
+.game-card.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #3b8346aa;
+  border: 2px solid #3b8346;
+}
+
+.background-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+body, * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px #00ff00;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+}
+
+.rectangle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.rectangle-card {
+  width: 345px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.rectangle-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.rectangle-card p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.rectangle-card.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #3b8346aa;
+  border: 2px solid #3b8346;
+}
+
+.user-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.user-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 12px;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); 
+}
+
+.user-logo {
+  width: 70px;
+  height: 15px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); 
+}
+
+.top-icons {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.top-icons img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  transition: transform 0.2s;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.top-icons img:hover {
+  transform: scale(1.1);
+}
+
+.clock-container {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+
+.clock-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.clock-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.clock-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
